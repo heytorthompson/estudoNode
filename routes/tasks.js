@@ -2,11 +2,6 @@ module.exports = app => {
 	const Tasks = app.db.models.Tasks;
 
 	app.route("/tasks")
-		.all((req, res, next) => {
-			// Middleware de pré-execução das rotas
-			delete req.body.id;
-			next();
-		})
 		.get((req, res) => {
 			// "/tasks": Lista tarefas
 			Tasks.findAll({})
@@ -24,11 +19,6 @@ module.exports = app => {
 				});
 		});
 	app.route("/tasks/:id")
-		.all((req, res) => {
-			// Middleware de pré-execução das rotas
-			delete req.body.id;
-			next();
-		})
 		.get((req, res) => {
 			// "/tasks/1": Consulta uma tarefa
 			Tasks.findOne({where: req.params})
