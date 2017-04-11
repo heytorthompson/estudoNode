@@ -5,7 +5,7 @@ module.exports = app => {
 	const Users = app.db.models.Users;
 	const cfg = app.libs.config;
 	const params = {
-		secretOrkey: cfg.jwtSecret,
+		secretOrKey: cfg.jwtSecret,
 		jwtFromRequest: ExtractJwt.fromAuthHeader()
 	};
 	const strategy = new Strategy(params, (payload, done) => {
